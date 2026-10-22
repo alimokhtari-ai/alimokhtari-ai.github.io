@@ -1,0 +1,300 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "food",
+      "name": "خوراک",
+      "type": "expense",
+      "color": "#42846b",
+      "icon": "food",
+      "budget": 4000000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "transport",
+      "name": "رفت‌وآمد",
+      "type": "expense",
+      "color": "#e2ae53",
+      "icon": "transport",
+      "budget": 1500000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "home",
+      "name": "خانه و قبوض",
+      "type": "expense",
+      "color": "#7189bb",
+      "icon": "home",
+      "budget": 8000000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "shopping",
+      "name": "خرید شخصی",
+      "type": "expense",
+      "color": "#b087ad",
+      "icon": "shopping",
+      "budget": 2000000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "health",
+      "name": "سلامت",
+      "type": "expense",
+      "color": "#d88172",
+      "icon": "health",
+      "budget": 1000000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "entertainment",
+      "name": "تفریح",
+      "type": "expense",
+      "color": "#8a9e6a",
+      "icon": "entertainment",
+      "budget": 1200000,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "salary",
+      "name": "حقوق",
+      "type": "income",
+      "color": "#42846b",
+      "icon": "salary",
+      "budget": 0,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "freelance",
+      "name": "کار آزاد",
+      "type": "income",
+      "color": "#7189bb",
+      "icon": "freelance",
+      "budget": 0,
+      "monthlyBudgets": {},
+      "archived": false
+    },
+    {
+      "id": "544aeacb-085d-4415-b7ba-d1b13a00e418",
+      "name": "آموزش",
+      "type": "expense",
+      "color": "#42846b",
+      "icon": "wallet",
+      "budget": 0,
+      "monthlyBudgets": {
+        "1405-07": 1200000
+      },
+      "archived": false
+    }
+  ],
+  "transactions": [
+    {
+      "id": "demo-previous-01",
+      "type": "income",
+      "amount": 30000000,
+      "categoryId": "salary",
+      "date": "2026-08-23",
+      "note": "حقوق ماه قبل",
+      "createdAt": "2026-08-23T12:00:00.000Z"
+    },
+    {
+      "id": "demo-previous-02",
+      "type": "expense",
+      "amount": 6000000,
+      "categoryId": "home",
+      "date": "2026-08-24",
+      "note": "اجارهٔ ماه قبل",
+      "createdAt": "2026-08-24T12:01:00.000Z"
+    },
+    {
+      "id": "demo-previous-03",
+      "type": "expense",
+      "amount": 2870000,
+      "categoryId": "food",
+      "date": "2026-08-30",
+      "note": "خریدهای خانه",
+      "createdAt": "2026-08-30T12:02:00.000Z"
+    },
+    {
+      "id": "demo-previous-04",
+      "type": "expense",
+      "amount": 980000,
+      "categoryId": "transport",
+      "date": "2026-09-03",
+      "note": "رفت‌وآمد ماه قبل",
+      "createdAt": "2026-09-03T12:03:00.000Z"
+    },
+    {
+      "id": "demo-previous-05",
+      "type": "income",
+      "amount": 4000000,
+      "categoryId": "freelance",
+      "date": "2026-09-08",
+      "note": "پروژهٔ ماه قبل",
+      "createdAt": "2026-09-08T12:04:00.000Z"
+    },
+    {
+      "id": "demo-previous-06",
+      "type": "expense",
+      "amount": 1450000,
+      "categoryId": "shopping",
+      "date": "2026-09-10",
+      "note": "خرید لباس",
+      "createdAt": "2026-09-10T12:05:00.000Z"
+    },
+    {
+      "id": "demo-previous-07",
+      "type": "expense",
+      "amount": 780000,
+      "categoryId": "entertainment",
+      "date": "2026-09-16",
+      "note": "تفریح آخر هفته",
+      "createdAt": "2026-09-16T12:06:00.000Z"
+    },
+    {
+      "id": "demo-current-01",
+      "type": "income",
+      "amount": 32000000,
+      "categoryId": "salary",
+      "date": "2026-09-23",
+      "note": "حقوق این ماه",
+      "createdAt": "2026-09-23T12:00:00.000Z"
+    },
+    {
+      "id": "demo-current-02",
+      "type": "expense",
+      "amount": 6000000,
+      "categoryId": "home",
+      "date": "2026-09-24",
+      "note": "اجارهٔ خانه",
+      "createdAt": "2026-09-24T12:01:00.000Z"
+    },
+    {
+      "id": "demo-current-03",
+      "type": "expense",
+      "amount": 1350000,
+      "categoryId": "food",
+      "date": "2026-09-26",
+      "note": "خرید هفتگی خانه",
+      "createdAt": "2026-09-26T12:02:00.000Z"
+    },
+    {
+      "id": "demo-current-04",
+      "type": "expense",
+      "amount": 420000,
+      "categoryId": "transport",
+      "date": "2026-09-28",
+      "note": "تاکسی و مترو",
+      "createdAt": "2026-09-28T12:03:00.000Z"
+    },
+    {
+      "id": "demo-current-05",
+      "type": "expense",
+      "amount": 750000,
+      "categoryId": "food",
+      "date": "2026-10-01",
+      "note": "خرید میوه و سبزیجات",
+      "createdAt": "2026-10-01T12:04:00.000Z"
+    },
+    {
+      "id": "demo-current-06",
+      "type": "expense",
+      "amount": 450000,
+      "categoryId": "health",
+      "date": "2026-10-04",
+      "note": "دارو و ویزیت",
+      "createdAt": "2026-10-04T12:05:00.000Z"
+    },
+    {
+      "id": "demo-current-07",
+      "type": "income",
+      "amount": 7500000,
+      "categoryId": "freelance",
+      "date": "2026-10-06",
+      "note": "پروژهٔ طراحی",
+      "createdAt": "2026-10-06T12:06:00.000Z"
+    },
+    {
+      "id": "demo-current-08",
+      "type": "expense",
+      "amount": 2450000,
+      "categoryId": "shopping",
+      "date": "2026-10-09",
+      "note": "کفش روزمره",
+      "createdAt": "2026-10-09T12:07:00.000Z"
+    },
+    {
+      "id": "demo-current-09",
+      "type": "expense",
+      "amount": 860000,
+      "categoryId": "food",
+      "date": "2026-10-12",
+      "note": "خرید سوپرمارکت",
+      "createdAt": "2026-10-12T12:08:00.000Z"
+    },
+    {
+      "id": "demo-current-10",
+      "type": "expense",
+      "amount": 950000,
+      "categoryId": "home",
+      "date": "2026-10-14",
+      "note": "قبض‌ها و اینترنت",
+      "createdAt": "2026-10-14T12:09:00.000Z"
+    },
+    {
+      "id": "demo-current-11",
+      "type": "expense",
+      "amount": 920000,
+      "categoryId": "entertainment",
+      "date": "2026-10-16",
+      "note": "سینما و کافه با دوستان",
+      "createdAt": "2026-10-16T12:10:00.000Z"
+    },
+    {
+      "id": "demo-current-12",
+      "type": "expense",
+      "amount": 260000,
+      "categoryId": "transport",
+      "date": "2026-10-18",
+      "note": "رفت‌وآمد هفته",
+      "createdAt": "2026-10-18T12:11:00.000Z"
+    },
+    {
+      "id": "demo-current-13",
+      "type": "expense",
+      "amount": 470000,
+      "categoryId": "food",
+      "date": "2026-10-20",
+      "note": "ناهار بیرون",
+      "createdAt": "2026-10-20T12:12:00.000Z"
+    },
+    {
+      "id": "ab466649-26a9-46bc-8883-4e47e3392d7e",
+      "type": "expense",
+      "amount": 850000,
+      "categoryId": "544aeacb-085d-4415-b7ba-d1b13a00e418",
+      "date": "2026-10-20",
+      "note": "خرید دورهٔ آموزشی",
+      "createdAt": "2026-10-22T08:30:00.000Z"
+    },
+    {
+      "id": "34e1fcaf-bd1e-4e42-9beb-d0ca466a357c",
+      "type": "income",
+      "amount": 3000000,
+      "categoryId": "freelance",
+      "date": "2026-10-22",
+      "note": "پروژهٔ تدوین",
+      "createdAt": "2026-10-22T08:30:00.000Z"
+    }
+  ],
+  "meta": {
+    "demo": true
+  }
+}

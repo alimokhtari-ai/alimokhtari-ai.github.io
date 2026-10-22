@@ -1,0 +1,18 @@
+{
+  "passed": 3,
+  "failed": 0,
+  "results": [
+    {
+      "name": "A stale open form does not resurrect a ledger removed by another tab",
+      "status": "passed"
+    },
+    {
+      "name": "Undo restores the latest transaction actually deleted after a concurrent edit",
+      "status": "passed"
+    },
+    {
+      "name": "Custom budgets in an otherwise empty ledger require confirmation before loading demo",
+      "status": "passed"
+    }
+  ]
+}

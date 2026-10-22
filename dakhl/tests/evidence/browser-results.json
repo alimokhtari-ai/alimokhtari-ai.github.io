@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-10-22T19:56:53.528Z",
+  "browser": "156.0.8078.47",
+  "file": "/workspace/scratch/3114fd1fc8f4/vc005-dakhl/index.html",
+  "fontEvidence": {
+    "h1": [
+      {
+        "familyName": "Estedad",
+        "postScriptName": "Estedad-Regular",
+        "isCustomFont": true,
+        "glyphCount": 18
+      }
+    ],
+    ".stat-money strong": [
+      {
+        "familyName": "Estedad",
+        "postScriptName": "Estedad-Regular",
+        "isCustomFont": true,
+        "glyphCount": 10
+      }
+    ]
+  },
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Fresh file opens offline with empty user ledger",
+      "status": "passed",
+      "milliseconds": 29
+    },
+    {
+      "name": "Sample transactions require explicit opt-in and persist on reload",
+      "status": "passed",
+      "milliseconds": 155
+    },
+    {
+      "name": "Embedded Persian font is actually loaded",
+      "status": "passed",
+      "milliseconds": 20
+    },
+    {
+      "name": "Responsive dashboard has no page overflow at 360, 390, 768 and 1440",
+      "status": "passed",
+      "milliseconds": 437
+    },
+    {
+      "name": "Transaction dialog traps keyboard focus and Escape restores the opener",
+      "status": "passed",
+      "milliseconds": 143
+    },
+    {
+      "name": "Month navigation changes the selected Persian month and returns to current",
+      "status": "passed",
+      "milliseconds": 140
+    },
+    {
+      "name": "Income and Persian-digit expense save through the real form and update all totals",
+      "status": "passed",
+      "milliseconds": 625
+    },
+    {
+      "name": "Transaction editing, confirmed deletion and undo update persisted amounts",
+      "status": "passed",
+      "milliseconds": 742
+    },
+    {
+      "name": "Invalid money, missing category and missing date are rejected without state mutation",
+      "status": "passed",
+      "milliseconds": 617
+    },
+    {
+      "name": "Exactly 80% has no warning; 801/1000 warns; monthly cap edit affects only that month",
+      "status": "passed",
+      "milliseconds": 575
+    },
+    {
+      "name": "Categories can be added, renamed and safely archived without losing transactions",
+      "status": "passed",
+      "milliseconds": 892
+    },
+    {
+      "name": "Month-scoped type, category and text filters select the right transactions",
+      "status": "passed",
+      "milliseconds": 192
+    },
+    {
+      "name": "Notes render as text; downloaded CSV preserves Persian and neutralizes formulas",
+      "status": "passed",
+      "milliseconds": 666
+    },
+    {
+      "name": "Downloaded JSON restores exactly; malformed and broken-reference imports leave data intact",
+      "status": "passed",
+      "milliseconds": 420
+    },
+    {
+      "name": "Storage failure reports an error and preserves the previous financial state",
+      "status": "passed",
+      "milliseconds": 183
+    },
+    {
+      "name": "All views and transaction form fit 360, 390, 768 and 1440px; money stays on one line",
+      "status": "passed",
+      "milliseconds": 1331
+    },
+    {
+      "name": "Large valid safe-integer amount stays exact and unbroken on a 360px screen",
+      "status": "passed",
+      "milliseconds": 114
+    },
+    {
+      "name": "No runtime errors or network dependencies",
+      "status": "passed",
+      "milliseconds": 0
+    }
+  ]
+}

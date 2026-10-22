@@ -1,0 +1,28 @@
+{
+  "kind": "real-browser-recording",
+  "date": "2026-10-22",
+  "timezone": "Asia/Tehran",
+  "offline": true,
+  "browser": "Chromium",
+  "desktopViewport": [
+    1440,
+    1000
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "sampleData": true,
+  "finalTransactions": 22,
+  "consoleErrors": [],
+  "notes": "Only captions and click emphasis were added for the recording; all app interactions and downloads are real. Mobile uses an explicit copied sample snapshot, not online synchronization.",
+  "artifact_sha256": "43ec3616154052297f40c833aa92d26dbc70c3d2af9837b51c88a747927e8315",
+  "caption_format": "Persian burned-in captions; no narration track",
+  "delivered_mp4": {
+    "duration_seconds": 97.033333,
+    "width": 1440,
+    "height": 1000,
+    "codec": "H.264",
+    "audio": "none; Persian captions embedded"
+  }
+}

@@ -1,0 +1,23 @@
+✔ Persian / Arabic digits and correctly grouped integer toman are accepted (1.555856ms)
+✔ invalid amounts and unsafe integers cannot enter the ledger (4.968751ms)
+✔ real Gregorian dates are validated without timezone rollover (1.614663ms)
+✔ Nowruz, Esfand leap days and Jalali month transitions are exact (0.959466ms)
+✔ every day around leap boundaries round-trips through the Persian calendar (15.292574ms)
+✔ warning starts strictly above 80%, with independent full/exceeded states (0.497174ms)
+✔ a per-month zero ceiling overrides a nonzero default, and never leaks months (0.207136ms)
+✔ income, expenses, balance, count and category amounts use the selected Jalali month only (2.126738ms)
+✔ editing preserves identity/creation time and updates amounts without double counting (0.479087ms)
+✔ archived categories retain history and old edits but reject new entries (1.219029ms)
+✔ ledger totals remain inside JavaScript exact-integer range (0.519256ms)
+✔ backup validation rejects dangling refs, duplicates, invalid types and prototype-like IDs (3.082358ms)
+✔ BOM CSV preserves Persian, valid numbers, quoted multiline text, and formula safety (1.01006ms)
+✔ sample data is explicit, reproducible, inside two real Jalali months, and demonstrates alerts (2.06069ms)
+✔ HTML-sensitive user text is escaped, and functions do not mutate source objects (1.49095ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44.356117

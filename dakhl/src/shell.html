@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#214e40">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; font-src data:; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>دخل — دفتر دخل‌وخرج شخصی</title>
+  <meta name="description" content="درآمد، هزینه و سقف‌های ماهانه‌ات را به تومان و با ماه شمسی ثبت کن. همه‌چیز روی همین مرورگر می‌ماند.">
+  <script type="text/plain" id="estedad-font-license">/*__FONT_LICENSE__*/</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23214e40'/%3E%3Cpath d='M18 22h26v23H18zM18 22l20-8v8M35 31h12v9H35z' fill='none' stroke='%23d4edb2' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>/*__STYLE__*/</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="منوی اصلی">
+      <a class="brand" href="#" data-action="nav" data-view="dashboard" aria-label="دخل، نمای کلی"><span class="brand-mark" data-icon="wallet"></span><span class="brand-word">دخل<span>دفتر شخصی پول</span></span></a>
+      <div class="sidebar-label">دفتر من</div>
+      <nav class="desktop-nav" aria-label="بخش‌های دفتر">
+        <button class="nav-link active" data-action="nav" data-view="dashboard" data-testid="nav-dashboard"><span data-icon="overview"></span>نمای کلی<span class="nav-dot"></span></button>
+        <button class="nav-link" data-action="nav" data-view="transactions" data-testid="nav-transactions"><span data-icon="list"></span>تراکنش‌ها</button>
+        <button class="nav-link" data-action="nav" data-view="budgets" data-testid="nav-budgets"><span data-icon="target"></span>دسته‌ها و سقف‌ها</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span data-icon="shield"></span><strong>پولت، اطلاعات خودته.</strong><p>این دفتر به اینترنت نیاز نداره. اطلاعاتت در همین مرورگر می‌مونه.</p></div>
+        <button class="nav-link" data-action="data" data-testid="data-manager"><span data-icon="database"></span>خروجی و پشتیبان</button>
+        <div class="sidebar-foot"><span class="status-dot"></span><span id="storage-status">ذخیره در مرورگر</span><span class="version-label">۱.۰</span></div>
+      </div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark small" data-icon="wallet"></span><strong>دخل</strong></div><div class="topbar-date" id="today-label"></div><div class="topbar-actions"><span id="demo-label" class="demo-badge" hidden>داده‌های نمونه</span><button class="icon-button mobile-data" data-action="data" aria-label="خروجی و پشتیبان"><span data-icon="database"></span></button><button class="text-button desktop-export" data-action="export-csv" data-testid="export-csv"><span data-icon="download"></span>خروجی CSV</button><span class="profile-icon" aria-label="دفتر شخصی" data-icon="user"></span></div></header>
+      <div class="page-heading"><div><div class="eyebrow" id="page-eyebrow">هر ماه، یک تصویر روشن‌تر</div><h1 id="page-title">پولت کجا می‌ره؟</h1><p id="page-subtitle">دخل‌وخرجت رو ببین، قبل از اینکه آخر ماه برسه.</p></div><button class="button primary add-button" data-action="add-transaction" data-testid="add-transaction"><span data-icon="plus"></span>ثبت تراکنش</button></div>
+      <div id="storage-warning" class="notice danger-notice" role="alert" hidden></div>
+      <div class="period-bar"><div class="period-control"><button class="icon-button" data-action="prev-month" data-testid="prev-month" aria-label="ماه قبل"><span data-icon="chevron-right"></span></button><div class="month-select-wrap"><span data-icon="calendar"></span><label for="month-select" class="sr-only">ماه شمسی</label><select id="month-select" data-testid="month-select"></select><span class="month-chevron" data-icon="chevron-down"></span></div><button class="icon-button" data-action="next-month" data-testid="next-month" aria-label="ماه بعد"><span data-icon="chevron-left"></span></button></div><div class="period-end"><span id="period-description">گزارش ماه انتخابی</span><button class="link-button" data-action="current-month" id="current-month-button" hidden>ماه جاری</button></div></div>
+      <div id="content" aria-live="off"></div>
+      <footer class="main-footer"><span>مبلغ‌ها به تومان · ماه‌ها شمسی</span><button class="link-button" data-action="help">راهنمای کوتاه<span data-icon="arrow-up-left"></span></button></footer>
+    </main>
+  </div>
+  <nav class="mobile-nav" aria-label="منوی موبایل"><button class="active" data-action="nav" data-view="dashboard"><span data-icon="overview"></span><span>نمای کلی</span></button><button data-action="nav" data-view="transactions"><span data-icon="list"></span><span>تراکنش‌ها</span></button><button data-action="nav" data-view="budgets"><span data-icon="target"></span><span>سقف‌ها</span></button></nav>
+  <dialog id="app-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+  <div id="toasts" class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
+  <input id="import-file" type="file" accept=".json,application/json" data-testid="import-json-input" hidden>
+  <noscript><div class="noscript">برای استفاده از دخل، JavaScript مرورگرت رو فعال کن.</div></noscript>
+  <script>/*__CORE__*/</script>
+  <script>/*__APP__*/</script>
+</body>
+</html>
