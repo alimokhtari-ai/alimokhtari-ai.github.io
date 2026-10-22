@@ -1,16 +1,22 @@
 # DAKHL · دخل
 
+[![Core and standalone build](https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/actions/workflows/dakhl-ci.yml/badge.svg)](https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/actions/workflows/dakhl-ci.yml)
+
 **A Persian personal finance app that runs from a single HTML file.**
 
 Record income and expenses in tomans, explore spending by Jalali month, and see which categories are approaching their monthly limits. The interface is Persian and right-to-left; your ledger stays in your browser.
 
-[راهنمای فارسی](docs/README-fa.md) · [Verification report](docs/QA-REVIEW.md) · [AI build prompts](docs/KEY-PROMPTS-fa.md)
+[**Open live demo**](https://alimokhtari-ai.github.io/dakhl/) · [راهنمای فارسی](docs/README-fa.md) · [Verification report](docs/QA-REVIEW.md) · [AI build prompts](docs/KEY-PROMPTS-fa.md)
 
 ![DAKHL dashboard showing a Jalali monthly summary, category chart and sample transactions](docs/media/dashboard.png)
 
 *Screenshots use explicitly labeled sample data.*
 
 ## Open it
+
+[Open the live app](https://alimokhtari-ai.github.io/dakhl/) and choose **دیدن دفتر نمونه** to explore it with labeled sample data. Each visitor's ledger stays in their own browser.
+
+For an offline copy:
 
 1. Download and extract the portfolio repository ZIP, then open its **`dakhl`** folder.
 2. Open **`index.html`** inside that folder in a desktop browser.
