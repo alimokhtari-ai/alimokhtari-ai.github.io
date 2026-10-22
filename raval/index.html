@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#132b3b">
+  <meta name="description" content="روال؛ دستیار پیش‌فاکتور خودرو. ویدیوی اجرای واقعی نسخهٔ محلی، کد کامل، منبع قیمت CSV و محاسبهٔ اقساط با پایتون.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="روال · دستیار پیش‌فاکتور خودرو">
+  <meta property="og:description" content="ویدیوی اجرای workflow، کد کامل و گزارش آزمون‌ها؛ قیمت از منبع، اقساط با کد.">
+  <meta property="og:url" content="https://alimokhtari-ai.github.io/raval/">
+  <title>روال · دستیار پیش‌فاکتور خودرو</title>
+  <link rel="icon" href="web/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face{font-family:Estedad;src:url('web/assets/Estedad-variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+    :root{--ink:#173040;--muted:#5d727b;--navy:#132b3b;--teal:#166b56;--line:#d8e3df;--page:#f3f6f5;--mint:#b6e8d8}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:24px}
+    body{margin:0;background:var(--page);color:var(--ink);font:15px/1.95 Estedad,Tahoma,sans-serif;font-synthesis:none}
+    a{color:inherit;text-decoration:none;touch-action:manipulation}
+    a:focus-visible,video:focus-visible{outline:3px solid #209879;outline-offset:5px}
+    h1,h2,h3,p{margin:0}
+    bdi{unicode-bidi:isolate}
+    .wrap{width:min(1120px,calc(100% - 64px));margin-inline:auto}
+    .skip{position:absolute;top:-100px;right:20px;background:white;padding:12px 20px;z-index:10}
+    .skip:focus{top:12px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:25px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:13px}
+    .brand img{width:41px;height:41px}
+    .brand strong{font-size:25px;line-height:1.5;font-weight:780}
+    .brand small{display:block;font-size:10px;letter-spacing:2.6px;line-height:1.4;color:var(--muted)}
+    .navlink{display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:12px;font-weight:600}
+    .navlink:hover{text-decoration:underline;text-underline-offset:6px}
+    .arrow{font-size:20px;line-height:1}
+    .hero{padding-block:64px 38px}
+    .eyebrow{font-size:11px;letter-spacing:.7px;color:var(--teal);font-weight:650;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .eyebrow::before{content:"";height:2px;width:24px;background:var(--teal)}
+    h1{font-size:clamp(32px,4.6vw,56px);font-weight:800;letter-spacing:-1.7px;line-height:1.65}
+    .lead{font-size:16px;max-width:710px;color:var(--muted);margin-top:15px;line-height:2.05}
+    .hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:29px}
+    .actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .button{display:inline-flex;justify-content:center;align-items:center;gap:12px;min-height:50px;padding:10px 22px;border:1px solid var(--teal);border-radius:10px;font-size:13px;font-weight:650;background:var(--teal);color:#fff;transition:background .15s,border-color .15s}
+    .button:hover{background:#105642;border-color:#105642}
+    .button.secondary{background:transparent;color:var(--ink);border-color:#bccdc6}
+    .button.secondary:hover{background:#e8efeb;border-color:#8da99c}
+    .proof{font-size:12px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+    .proof span+span{border-inline-start:1px solid #c5d5cd;padding-inline-start:18px}
+    .proof strong{color:var(--ink);font-size:17px;font-weight:700;margin-inline-end:4px}
+    .demo{border:1px solid #cddbd5;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px #132b3b07}
+    .demo-head{padding:23px 27px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .demo-head h2{font-size:18px;font-weight:720;line-height:1.85}
+    .demo-head p{font-size:11px;color:var(--muted);margin-top:3px}
+    .duration{font-size:12px;white-space:nowrap;background:#ecf4ef;border:1px solid #d6e6dc;border-radius:7px;padding:4px 11px;color:var(--teal)}
+    video{display:block;width:100%;height:auto;aspect-ratio:36/25;background:var(--navy);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .mode{padding:20px 27px;font-size:12px;line-height:2.1;color:#4b655b;background:#f5faf7}
+    .mode strong{font-weight:700;color:#264e3d}
+    .inside{padding-block:51px 46px}
+    .section-title{font-size:22px;font-weight:750;margin-bottom:22px;letter-spacing:-.4px}
+    .features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 46px}
+    .feature{display:grid;grid-template-columns:32px minmax(0,1fr);gap:15px;align-items:baseline;border-top:1px solid var(--line);padding-top:19px}
+    .number{font-size:12px;font-weight:600;color:var(--teal)}
+    .feature h3{font-size:15px;font-weight:700;margin-bottom:6px}
+    .feature p{font-size:12px;color:var(--muted);line-height:2.05}
+    .download{border-radius:16px;background:var(--navy);color:#f2f8f5;padding:31px 34px;display:flex;justify-content:space-between;align-items:center;gap:28px}
+    .download h2{font-size:22px;font-weight:700;line-height:1.8}
+    .download p{color:#bacecf;font-size:12px;margin-top:6px;line-height:2}
+    .download .button{background:var(--mint);color:var(--navy);border-color:var(--mint);white-space:nowrap;flex-shrink:0}
+    .download .button:hover{background:#d3f2e7;border-color:#d3f2e7}
+    .resources{display:flex;gap:24px;flex-wrap:wrap;margin-top:20px;font-size:12px}
+    .resources a{min-height:44px;display:inline-flex;align-items:center;color:var(--teal);text-decoration:underline;text-underline-offset:6px;text-decoration-color:#a6bfb4}
+    .resources a:hover{text-decoration-color:var(--teal)}
+    footer{margin-top:39px;padding-block:22px 30px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:10px}
+    footer a:hover{text-decoration:underline;text-underline-offset:4px}
+    @media(max-width:700px){.wrap{width:calc(100% - 36px)}.topbar{padding-block:18px}.brand img{width:35px;height:35px}.brand strong{font-size:22px}.navlink{font-size:11px}.hero{padding-block:36px 28px}h1{font-size:34px;letter-spacing:-1px;line-height:1.65}.eyebrow{font-size:10px;margin-bottom:13px}.lead{font-size:13px;margin-top:12px}.hero-bottom{margin-top:23px;gap:22px}.actions{gap:9px}.button{font-size:12px;min-height:48px;padding:9px 16px}.proof{gap:16px;font-size:11px}.proof span+span{padding-inline-start:16px}.proof strong{font-size:16px}.demo{border-radius:12px}.demo-head{padding:18px 16px;gap:12px}.demo-head h2{font-size:14px}.demo-head p{font-size:10px;max-width:230px}.duration{font-size:11px;padding:3px 8px}.mode{padding:16px;font-size:11px}.inside{padding-block:33px}.section-title{font-size:19px;margin-bottom:17px}.features{grid-template-columns:1fr;gap:21px}.feature{gap:11px;grid-template-columns:26px minmax(0,1fr);padding-top:17px}.feature h3{font-size:14px}.feature p{font-size:11px}.download{padding:24px 21px;flex-direction:column;align-items:stretch;gap:18px;border-radius:12px}.download h2{font-size:20px}.download p{font-size:11px}.download .button{align-self:flex-start}.resources{gap:4px 20px;margin-top:13px;font-size:11px}footer{margin-top:26px;font-size:9px;flex-wrap:wrap;gap:7px}}
+    @media(max-width:359px){.wrap{width:calc(100% - 28px)}h1{font-size:30px}.navlink{font-size:10px}.brand{gap:9px}.actions{width:100%}.actions .button{flex:1;padding-inline:10px;font-size:11px;gap:6px}.proof{gap:12px;font-size:10px}.proof span+span{padding-inline-start:12px}.demo-head{align-items:flex-start}.demo-head h2{font-size:13px}.demo-head p{font-size:9px}.duration{font-size:10px;padding-inline:6px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">رفتن به محتوای اصلی</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./" aria-label="روال، صفحهٔ معرفی پروژه">
+      <img src="web/assets/favicon.svg" width="41" height="41" alt="">
+      <span><strong>روال</strong><small lang="en" dir="ltr">RAVAL</small></span>
+    </a>
+    <a class="navlink" href="https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/tree/main/raval">پروژه در گیت‌هاب <span class="arrow" aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow"><bdi lang="en">AI Orchestrator · VC-005</bdi></p>
+      <h1 id="title">دستیار پیش‌فاکتور خودرو</h1>
+      <p class="lead">روال مدل و سال خودرو را از پیام مشتری مشخص می‌کند، قیمت را از فایل منبع می‌خواند و اقساط را با کد حساب می‌کند. ردیف منبع و مسیر پردازش کنار هر پاسخ دیده می‌شود.</p>
+      <div class="hero-bottom">
+        <div class="actions">
+          <a class="button" href="#demo">دیدن ویدیوی اجرا <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/tree/main/raval#readme">کد و راهنمای اجرا</a>
+        </div>
+        <p class="proof" aria-label="آزمون‌های موفق نسخهٔ محلی"><span><strong>۸۰</strong> تست پایتون</span><span><strong>۱۵</strong> سناریوی مرورگر</span></p>
+      </div>
+    </section>
+
+    <section class="demo" id="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <div><h2 id="demo-title">ویدیوی اجرای واقعی نسخهٔ محلی</h2><p>با زیرنویس فارسی؛ شامل سؤال مبهم و بررسی حفظ دقیق قیمت</p></div>
+        <span class="duration" aria-label="یک دقیقه و چهل و پنج ثانیه">۱:۴۵</span>
+      </div>
+      <video controls playsinline preload="metadata" aria-label="ویدیوی اجرای روال با زیرنویس فارسی داخل تصویر" aria-describedby="demo-mode">
+        <source src="releases/RAVAL-VC005-Demo-Web.mp4" type="video/mp4">
+        مرورگر شما نمایش ویدیو را پشتیبانی نمی‌کند. <a href="releases/RAVAL-VC005-Demo-Web.mp4">ویدیوی اجرا را دانلود کنید.</a>
+      </video>
+      <p class="mode" id="demo-mode"><strong>وضعیت این نسخه:</strong> برنامهٔ پایتون، خواندن CSV و محاسبات واقعاً اجرا می‌شوند. مدل در حالت نمونه است و پنل پیام‌رسان، شبیه‌ساز تلگرام است. اتصال زنده به تلگرام یا مدل ابری آزمایش نشده؛ این صفحه برای تماشای اجرا و دریافت پروژه است.</p>
+    </section>
+
+    <section class="inside" aria-labelledby="inside-title">
+      <h2 class="section-title" id="inside-title">در این اجرا چه چیزی بررسی می‌شود؟</h2>
+      <div class="features">
+        <article class="feature"><span class="number" aria-hidden="true">۰۱</span><div><h3>قیمت، عیناً از منبع</h3><p>قیمت خودرو از CSV می‌آید و گرد نمی‌شود. تغییر یک قیمت به عدد غیررُند نشان می‌دهد که همان عدد در پیش‌فاکتور حفظ می‌شود.</p></div></article>
+        <article class="feature"><span class="number" aria-hidden="true">۰۲</span><div><h3>سال نامشخص، سؤال تکمیلی</h3><p>برای «۲۰۷ نو چند؟» ابتدا سال پرسیده می‌شود. «نو» جای سال را نمی‌گیرد و وضعیت نو یا کارکرده، بدون دادهٔ منبع تأیید نمی‌شود.</p></div></article>
+        <article class="feature"><span class="number" aria-hidden="true">۰۳</span><div><h3>اقساط با محاسبهٔ قابل بررسی</h3><p>پیش‌پرداخت و جدول اقساط با کد محاسبه می‌شوند. مبلغ قسط آخر، مانده را تسویه می‌کند و سیاست گردکردن مبلغ‌های محاسبه‌شده مشخص است.</p></div></article>
+        <article class="feature"><span class="number" aria-hidden="true">۰۴</span><div><h3>گزینهٔ جایگزین از خود جدول</h3><p>اگر خودرو یا سال در منبع نباشد، حداکثر سه ردیف نزدیک از همان جدول پیشنهاد می‌شود؛ انتخاب جایگزین با مشتری است.</p></div></article>
+      </div>
+    </section>
+
+    <section class="download" aria-labelledby="download-title">
+      <div><h2 id="download-title">پروژهٔ کامل را بررسی کنید.</h2><p>کد اجرایی، دادهٔ نمونه، تست‌ها و راهنمای فارسی<br>اجرای برنامه با <bdi lang="en">Python 3.10+</bdi>؛ بدون نیاز به نصب پکیج</p></div>
+      <a class="button" href="releases/RAVAL-VC005.zip" download>دانلود پروژه <span aria-hidden="true">↓</span><bdi lang="en">ZIP</bdi></a>
+    </section>
+    <nav class="resources" aria-label="فایل‌های تکمیلی پروژه">
+      <a href="releases/RAVAL-VC005-Demo-Web.mp4" download>دانلود ویدیو</a>
+      <a href="https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/blob/main/raval/docs/FINANCE-fa.md">فرمول و فرض‌های محاسبه</a>
+      <a href="https://github.com/alimokhtari-ai/alimokhtari-ai.github.io/blob/main/raval/docs/VERIFICATION-fa.md">گزارش تست‌ها و محدودیت‌ها</a>
+    </nav>
+  </main>
+  <footer class="wrap"><span>قیمت‌ها دادهٔ آموزشی تسک‌اند و قیمت بازار نیستند.</span><a href="https://github.com/alimokhtari-ai"><bdi lang="en">Ali Mokhtari · RAVAL</bdi></a></footer>
+</body>
+</html>

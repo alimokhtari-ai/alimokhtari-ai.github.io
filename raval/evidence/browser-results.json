@@ -1,0 +1,287 @@
+{
+  "product": "RAVAL",
+  "started_at_utc": "2026-10-22T20:47:48.781Z",
+  "finished_at_utc": "2026-10-22T20:47:55.751Z",
+  "browser": "156.0.8078.47",
+  "environment": "Headless Chromium on Linux; isolated real Python HTTP server and temporary CSV/SQLite",
+  "mode": "fixture",
+  "live_llm_tested": false,
+  "live_telegram_tested": false,
+  "passed": 15,
+  "failed": 0,
+  "fatal": null,
+  "results": [
+    {
+      "id": "startup-and-font",
+      "label": "Empty fixture startup, real HTTP and actually rendered Estedad font",
+      "status": "passed",
+      "duration_ms": 35,
+      "detail": {
+        "rows": 5,
+        "mode": "fixture",
+        "source_version": "88d1496cc865b5fdd7881539d2c8c4df9964abcfc2a4d6d5cf204fb197e7961e"
+      }
+    },
+    {
+      "id": "initial-downloads",
+      "label": "Initial CSV has UTF-8 BOM; workflow JSON is descriptive and valid",
+      "status": "passed",
+      "duration_ms": 212,
+      "detail": {
+        "csv_bom": true,
+        "csv_bytes": 360,
+        "workflow_nodes": 6
+      }
+    },
+    {
+      "id": "exact-quote",
+      "label": "207/1402 uses exact CSV price, required trace and real repayment schedule",
+      "status": "passed",
+      "duration_ms": 301,
+      "detail": {
+        "price_toman": "1090000000",
+        "down_payment_toman": "436000000",
+        "installments": 12
+      }
+    },
+    {
+      "id": "schedule-keyboard",
+      "label": "Repayment dialog opens, contains focus, and closes with Escape",
+      "status": "passed",
+      "duration_ms": 103
+    },
+    {
+      "id": "ambiguous-year-followup",
+      "label": "Newness never invents year; actual year option completes the request",
+      "status": "passed",
+      "duration_ms": 305
+    },
+    {
+      "id": "missing-model-alternatives",
+      "label": "Missing 206 gets at most three real CSV alternatives and no invented invoice",
+      "status": "passed",
+      "duration_ms": 198,
+      "detail": {
+        "real_alternatives": 3
+      }
+    },
+    {
+      "id": "injection-safe",
+      "label": "Customer markup stays text and cannot override quoted financial source",
+      "status": "passed",
+      "duration_ms": 245
+    },
+    {
+      "id": "history-and-isolation",
+      "label": "HTTP history survives reload and a separate browser conversation cannot borrow pending model",
+      "status": "passed",
+      "duration_ms": 1629,
+      "detail": {
+        "reload_assistant_messages": 2,
+        "independent_contexts": 2
+      }
+    },
+    {
+      "id": "catalog-exact-edit",
+      "label": "Source editor preserves irregular price 1,090,000,123 through next real request",
+      "status": "passed",
+      "duration_ms": 337,
+      "detail": {
+        "exact_price_toman": "1090000123",
+        "source_changed": true
+      }
+    },
+    {
+      "id": "invalid-catalog",
+      "label": "Invalid source edit remains visible as error and never replaces valid CSV",
+      "status": "passed",
+      "duration_ms": 223
+    },
+    {
+      "id": "catalog-version-conflict",
+      "label": "Two editor sessions cannot silently overwrite a newer source version",
+      "status": "passed",
+      "duration_ms": 330
+    },
+    {
+      "id": "catalog-refresh-race",
+      "label": "A delayed real catalog refresh cannot silently replace the version of an already-open draft",
+      "status": "passed",
+      "duration_ms": 449,
+      "detail": {
+        "real_response_delayed": true,
+        "conflicting_draft_rejected": true
+      }
+    },
+    {
+      "id": "network-loss",
+      "label": "Unexpected network loss shows no fake quote; retry preserves the pending request without duplicate bubble",
+      "status": "passed",
+      "duration_ms": 393
+    },
+    {
+      "id": "responsive-all-views",
+      "label": "320/390/768/1440: all three views fit the viewport; real desktop/mobile screenshots",
+      "status": "passed",
+      "duration_ms": 1345,
+      "detail": {
+        "view_width_combinations": 12,
+        "widths": [
+          320,
+          390,
+          768,
+          1440
+        ]
+      }
+    },
+    {
+      "id": "clean-runtime-and-isolation",
+      "label": "No uncaught errors, no external requests, no changes to original catalog",
+      "status": "passed",
+      "duration_ms": 1,
+      "detail": {
+        "unexpected_errors": 0,
+        "external_requests": 0,
+        "expected_network_failures": 1,
+        "original_catalog_sha256": "88d1496cc865b5fdd7881539d2c8c4df9964abcfc2a4d6d5cf204fb197e7961e"
+      }
+    }
+  ],
+  "rendered_fonts": [
+    {
+      "familyName": "Estedad",
+      "postScriptName": "Estedad-Regular",
+      "isCustomFont": true,
+      "glyphCount": 49
+    }
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "view": "run",
+      "viewport": 320,
+      "document_width": 320,
+      "body_width": 320
+    },
+    {
+      "width": 320,
+      "view": "catalog",
+      "viewport": 320,
+      "document_width": 320,
+      "body_width": 320
+    },
+    {
+      "width": 320,
+      "view": "about",
+      "viewport": 320,
+      "document_width": 320,
+      "body_width": 320
+    },
+    {
+      "width": 390,
+      "view": "run",
+      "viewport": 390,
+      "document_width": 390,
+      "body_width": 390
+    },
+    {
+      "width": 390,
+      "view": "catalog",
+      "viewport": 390,
+      "document_width": 390,
+      "body_width": 390
+    },
+    {
+      "width": 390,
+      "view": "about",
+      "viewport": 390,
+      "document_width": 390,
+      "body_width": 390
+    },
+    {
+      "width": 768,
+      "view": "run",
+      "viewport": 768,
+      "document_width": 768,
+      "body_width": 768
+    },
+    {
+      "width": 768,
+      "view": "catalog",
+      "viewport": 768,
+      "document_width": 768,
+      "body_width": 768
+    },
+    {
+      "width": 768,
+      "view": "about",
+      "viewport": 768,
+      "document_width": 768,
+      "body_width": 768
+    },
+    {
+      "width": 1440,
+      "view": "run",
+      "viewport": 1440,
+      "document_width": 1440,
+      "body_width": 1440
+    },
+    {
+      "width": 1440,
+      "view": "catalog",
+      "viewport": 1440,
+      "document_width": 1440,
+      "body_width": 1440
+    },
+    {
+      "width": 1440,
+      "view": "about",
+      "viewport": 1440,
+      "document_width": 1440,
+      "body_width": 1440
+    }
+  ],
+  "unexpected_errors": [],
+  "expected_error_events": [
+    {
+      "phase": "invalid-catalog",
+      "kind": "console",
+      "message": "Failed to load resource: the server responded with a status of 400 (Bad Request)",
+      "url": "http://127.0.0.1:39909/api/catalog"
+    },
+    {
+      "phase": "catalog-version-conflict",
+      "kind": "console",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "url": "http://127.0.0.1:39909/api/catalog"
+    },
+    {
+      "phase": "catalog-refresh-race",
+      "kind": "console",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "url": "http://127.0.0.1:39909/api/catalog"
+    },
+    {
+      "phase": "network-loss",
+      "kind": "console",
+      "message": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://127.0.0.1:39909/api/message"
+    }
+  ],
+  "external_requests": [],
+  "failed_requests": [
+    {
+      "phase": "network-loss",
+      "path": "/api/message",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    }
+  ],
+  "screenshots": [
+    "qa-desktop-1440.png",
+    "qa-mobile-390.png"
+  ],
+  "limits": [
+    "No live Groq credentials or Telegram delivery test.",
+    "No physical mobile device, Safari, or Microsoft Excel application test."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "family": "Estedad",
+  "version": "Version 8.5",
+  "source": "https://github.com/aminabedi68/Estedad",
+  "filename": "Estedad-variable.woff2",
+  "license": "OFL-1.1",
+  "sha256": "18a2278ad5c9c2f60e034270ea2d5856d04c4e984e47c65483aa63b41e3c5a1e",
+  "axes": [
+    {
+      "tag": "wght",
+      "min": 100.0,
+      "default": 400.0,
+      "max": 900.0
+    }
+  ],
+  "persian_glyphs_verified": true,
+  "git_tree_sha": "0dbe689787b8c2ea302373cb601d0f352f9f98e5"
+}

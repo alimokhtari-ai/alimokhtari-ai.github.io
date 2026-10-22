@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.runtime/
+runtime/
+*.sqlite*
+*.db
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+node_modules/
+evidence/recording/
+deliverables/
+.DS_Store
+

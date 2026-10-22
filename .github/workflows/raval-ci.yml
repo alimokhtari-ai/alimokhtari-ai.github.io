@@ -1,0 +1,82 @@
+name: RAVAL verification
+
+on:
+  push:
+    paths:
+      - 'raval/**'
+      - '.github/workflows/raval-ci.yml'
+  pull_request:
+    paths:
+      - 'raval/**'
+      - '.github/workflows/raval-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: raval-verification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: raval
+
+env:
+  QUOTE_LLM_PROVIDER: fixture
+  GROQ_API_KEY: ''
+  TELEGRAM_BOT_TOKEN: ''
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }} · 80 tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Test the engine, workflow, HTTP server, and mocked adapters
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+
+  browser:
+    name: Chromium · 15 browser scenarios
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python for the isolated local server
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js for browser verification
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Install the pinned development-only browser runner
+        run: npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.62.1
+
+      - name: Install Chromium and its Linux dependencies
+        run: npx --no-install playwright install --with-deps chromium
+
+      - name: Exercise the real local workflow and responsive interface
+        run: node tests/browser.test.cjs

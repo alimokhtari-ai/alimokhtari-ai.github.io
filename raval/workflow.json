@@ -1,0 +1,136 @@
+{
+  "schema": "raval.descriptive-workflow.v1",
+  "name": "RAVAL — روال",
+  "applicant_code": "VC-005",
+  "track": "AI Orchestrator",
+  "document_type": "portable_descriptive_workflow",
+  "n8n_importable": false,
+  "notice_fa": "این فایل شرح مسیر پیاده‌سازی پایتون است؛ خروجی قابل Import در n8n نیست.",
+  "execution": {
+    "runtime": "Python 3.10+ standard library",
+    "entrypoint": "python3 server.py",
+    "local_url": "http://127.0.0.1:8765",
+    "timezone": "Asia/Tehran",
+    "default_model_mode": "fixture",
+    "default_telegram_ui": "simulator",
+    "credentials_included": false,
+    "live_integrations_claimed": false
+  },
+  "source": {
+    "path": "data/prices.csv",
+    "provenance": "fictional task dataset; not market prices or physical stock",
+    "headers": ["خودرو", "سال", "قیمت", "درصد پیش‌پرداخت", "تعداد اقساط"],
+    "reread_for_each_new_request": true,
+    "quote_provenance": ["source_row", "source_version"],
+    "absent_attributes": ["stock", "new_or_used_condition", "color", "binding_sales_terms"]
+  },
+  "nodes": [
+    {
+      "id": "intake",
+      "title_fa": "دریافت درخواست",
+      "owner": "workflow.py",
+      "inputs": ["text", "chat_id", "request_id"],
+      "actions": ["validate input", "persistent request deduplication", "load conversation-specific unexpired context"],
+      "output": "validated request or cached prior response",
+      "context_ttl_minutes": 15
+    },
+    {
+      "id": "extraction",
+      "title_fa": "استخراج مشخصات",
+      "owner": "quote_engine.py + model_gateway.py",
+      "model_inputs": ["request text", "allowed model names", "limited context"],
+      "model_outputs": ["model", "year", "condition"],
+      "checks": ["validate evidence in message/context", "reject conflicting years", "reset incompatible context when model changes", "do not interpret newness as year"],
+      "excluded_model_inputs": ["vehicle price", "down-payment percentage", "installment count"],
+      "missing_year_outcome": "clarify"
+    },
+    {
+      "id": "lookup",
+      "title_fa": "تطبیق با منبع",
+      "owner": "quote_engine.py",
+      "actions": ["read current CSV", "validate headers and rows", "reject duplicate model/year entries", "match exact model and year"],
+      "no_exact_match": "up to three existing-row alternatives with stated matching criteria; require user selection before replacement quote",
+      "invalid_catalog_outcome": "blocked"
+    },
+    {
+      "id": "calculation",
+      "title_fa": "محاسبهٔ اقساط",
+      "owner": "quote_engine.py",
+      "arithmetic": "Decimal",
+      "inputs": ["exact CSV price", "CSV down-payment percentage", "CSV installment count", "configured annual nominal interest rate"],
+      "output": "integer-toman quote and reconciled amortization schedule",
+      "llm_authority": "none"
+    },
+    {
+      "id": "composition",
+      "title_fa": "ساخت پاسخ",
+      "owner": "quote_engine.py + model_gateway.py",
+      "model_input": "status only",
+      "allowed_model_output": {
+        "opening_id": ["hello", "formal"],
+        "closing_id": ["review", "help"]
+      },
+      "financial_body": "deterministic code-owned rendering",
+      "free_form_model_text_allowed": false,
+      "required_disclosures": ["sample source", "rate and payment assumption", "no fees or insurance included", "newness and stock unavailable", "different final payment when applicable"]
+    },
+    {
+      "id": "validation",
+      "title_fa": "بررسی و تحویل",
+      "owner": "quote_engine.py + workflow.py",
+      "actions": ["validate response invariants", "retain source row and version", "retain truthful trace and mode", "persist result for request deduplication"],
+      "invalid_output_outcome": "blocked",
+      "output": "plain-text Persian reply plus structured quote, options and trace"
+    }
+  ],
+  "stage_order": ["intake", "extraction", "lookup", "calculation", "composition", "validation"],
+  "trace_contract": {
+    "fields": ["id", "title", "state", "detail", "elapsed_ms"],
+    "allowed_states": ["passed", "waiting", "blocked", "skipped"],
+    "timings": "measured execution durations; no artificial waits",
+    "early_exit": "unexecuted stages remain waiting or skipped; no fabricated success"
+  },
+  "response_statuses": ["quote", "clarify", "alternatives", "blocked", "welcome"],
+  "model_modes": ["fixture", "live", "fallback"],
+  "finance_policy": {
+    "currency": "toman",
+    "vehicle_price_rounding": "never",
+    "annual_rate_type": "nominal percentage",
+    "default_annual_rate_percent": "23",
+    "monthly_rate_formula": "annual_percent / 1200",
+    "payment_timing": "end of month",
+    "amortization": "reducing balance",
+    "down_payment": "ROUND_HALF_UP(price * down_payment_percent / 100) to whole toman",
+    "principal": "unchanged CSV price minus rounded down payment",
+    "payment_formula": "P*r/(1-(1+r)^(-n)); P/n when r=0",
+    "first_n_minus_one_payments": "fixed PMT rounded HALF_UP to whole toman",
+    "period_interest": "ROUND_HALF_UP(opening principal balance * monthly rate) to whole toman",
+    "final_payment": "remaining principal plus final posted interest",
+    "schedule_invariants": ["payment = posted interest + principal component", "closing balance never negative", "final balance = 0", "total interest = total paid - unchanged CSV vehicle price"],
+    "excluded_costs": ["fees", "insurance", "other charges"]
+  },
+  "optional_adapters": {
+    "groq": {
+      "module": "model_gateway.py",
+      "default_model": "openai/gpt-oss-20b",
+      "configuration": ["QUOTE_LLM_PROVIDER", "QUOTE_LLM_MODEL", "GROQ_API_KEY"],
+      "failure_policy": "explicit deterministic fallback with trace"
+    },
+    "telegram": {
+      "module": "telegram_bot.py",
+      "command": "python3 telegram_bot.py",
+      "transport": "getUpdates long polling",
+      "allowed_chats": "explicit positive private-chat IDs only",
+      "configuration": ["TELEGRAM_BOT_TOKEN", "TELEGRAM_ALLOWED_CHAT_IDS"],
+      "active_webhook_policy": "refuse to start; never silently delete existing webhook",
+      "send_format": "plain-text sendMessage without parse_mode",
+      "ambiguous_send_policy": "persist needs-review state; no blind automatic resend",
+      "review_command": "python3 telegram_bot.py --review"
+    }
+  },
+  "references": [
+    "https://console.groq.com/docs/structured-outputs",
+    "https://core.telegram.org/bots/api",
+    "https://support.google.com/docs/answer/3093185?hl=en"
+  ]
+}

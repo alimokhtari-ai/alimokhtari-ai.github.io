@@ -1,0 +1,19 @@
+{
+  "evidence_written_at_utc": "2026-10-22T20:54:34.471138+00:00",
+  "command": "python3 -m unittest discover -s tests -p 'test_*.py' -q",
+  "observed_terminal_output": "Ran 80 tests in 4.273s — OK",
+  "tests": 80,
+  "failures": 0,
+  "errors": 0,
+  "duration_seconds": 4.273,
+  "modules": {
+    "test_engine": 27,
+    "test_gateway": 13,
+    "test_telegram": 26,
+    "test_server": 7,
+    "test_workflow": 7
+  },
+  "network": "Local HTTP tests are real; Groq and Telegram transports are mocked.",
+  "live_llm_tested": false,
+  "live_telegram_tested": false
+}
